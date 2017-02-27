@@ -1,0 +1,21 @@
+#!/bin/sh -f
+#
+#	mpi_test for torque_pbs
+#	Copyright © 2017 MargiievHE (Marhiiev Heorhii)
+#	Author:		Georg (Heorhii Marhiiev)
+#	e-mail1:	margievGE@gmail.com
+#	e-mail2:	marghiievHE@gmail.com
+#
+#PBS -N test
+#PBS -l nodes=7:ppn=1
+#PBS -l walltime=00:05:00
+#PBS -V
+MY_PROGRAM=bin/mpi_test
+MY_MPIRUN=/opt/openmpi/bin/mpirun
+#MY_MPIRUN=/opt/mpich2/bin/mpirun
+NODES=`cat $PBS_NODEFILE | egrep -v '^#'\|'^$' | wc -l | awk '{print $1}'`
+cd $PBS_O_WORKDIR
+cat $PBS_NODEFILE |sort > mfile
+echo "start"
+$MY_MPIRUN -n $NODES -machinefile $PBS_O_WORKDIR/mfile $PBS_O_WORKDIR/$MY_PROGRAM
+echo "end"
