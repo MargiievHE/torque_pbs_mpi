@@ -5,4 +5,5 @@
 qsub run_test.pbs
 
 Проверка состояния очереди
+
 qstat
