@@ -11,8 +11,8 @@
 #PBS -l walltime=00:05:00
 #PBS -V
 MY_PROGRAM=bin/mpi_test
-MY_MPIRUN=/opt/openmpi/bin/mpirun
-#MY_MPIRUN=/opt/mpich2/bin/mpirun
+#MY_MPIRUN=/opt/openmpi/bin/mpirun
+MY_MPIRUN=/opt/mpich2/bin/mpirun
 NODES=`cat $PBS_NODEFILE | egrep -v '^#'\|'^$' | wc -l | awk '{print $1}'`
 cd $PBS_O_WORKDIR
 cat $PBS_NODEFILE |sort > mfile

@@ -1,5 +1,5 @@
-COMPILER=/opt/openmpi/bin/mpicc
-#COMPILER=/opt/mpich2/bin/mpicc
+#COMPILER=/opt/openmpi/bin/mpicc
+COMPILER=/opt/mpich2/bin/mpicc
 
 all:		mpi_test
 
